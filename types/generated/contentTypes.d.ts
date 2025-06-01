@@ -433,6 +433,39 @@ export interface ApiNuevacoleccionjcNuevacoleccionjc
   };
 }
 
+export interface ApiTestCloudDynaryTestCloudDynary
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'test_cloud_dynaries';
+  info: {
+    displayName: 'TestCloudDynary';
+    pluralName: 'test-cloud-dynaries';
+    singularName: 'test-cloud-dynary';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imagenprueba: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::test-cloud-dynary.test-cloud-dynary'
+    > &
+      Schema.Attribute.Private;
+    nombreImagen: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -944,6 +977,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::global.global': ApiGlobalGlobal;
       'api::nuevacoleccionjc.nuevacoleccionjc': ApiNuevacoleccionjcNuevacoleccionjc;
+      'api::test-cloud-dynary.test-cloud-dynary': ApiTestCloudDynaryTestCloudDynary;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

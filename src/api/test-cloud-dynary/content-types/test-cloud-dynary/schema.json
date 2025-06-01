@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_cloud_dynaries",
+  "info": {
+    "singularName": "test-cloud-dynary",
+    "pluralName": "test-cloud-dynaries",
+    "displayName": "TestCloudDynary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombreImagen": {
+      "type": "string"
+    },
+    "imagenprueba": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
