@@ -460,6 +460,35 @@ export interface ApiNuevacoleccionjcNuevacoleccionjc
   };
 }
 
+export interface ApiPagePage extends Struct.SingleTypeSchema {
+  collectionName: 'pages';
+  info: {
+    displayName: 'Page';
+    pluralName: 'pages';
+    singularName: 'page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
+      Schema.Attribute.Private;
+    nuevacoleccionjc: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::nuevacoleccionjc.nuevacoleccionjc'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTestCloudDynaryTestCloudDynary
   extends Struct.CollectionTypeSchema {
   collectionName: 'test_cloud_dynaries';
@@ -1005,6 +1034,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::hero.hero': ApiHeroHero;
       'api::nuevacoleccionjc.nuevacoleccionjc': ApiNuevacoleccionjcNuevacoleccionjc;
+      'api::page.page': ApiPagePage;
       'api::test-cloud-dynary.test-cloud-dynary': ApiTestCloudDynaryTestCloudDynary;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
